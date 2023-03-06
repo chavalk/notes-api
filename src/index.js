@@ -17,6 +17,10 @@ app.get('/notes', (req, res) => {
     })
 });
 
+app.post('notes', (req, res) => {
+    const note = new Note(req.body)
+});
+
 app.listen(3000, () => {
     console.log("Server is up on port 3000")
 });
