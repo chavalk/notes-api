@@ -3,6 +3,8 @@ const fs = require('fs')
 
 require('./db/mongoose')
 
+const Note = require('./models/note');
+
 const app = express();
 
 app.get('/notes', (req, res) => {
