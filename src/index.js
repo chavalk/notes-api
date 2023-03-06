@@ -1,7 +1,7 @@
 const express = require('express');
-const fs = require('fs')
+const fs = require('fs');
 
-require('./db/mongoose')
+require('./db/mongoose');
 
 const Note = require('./models/note');
 
@@ -15,8 +15,8 @@ app.get('/notes', (req, res) => {
 
         res.status(200).send(data)
     })
-})
+});
 
 app.listen(3000, () => {
     console.log("Server is up on port 3000")
-})
+});
