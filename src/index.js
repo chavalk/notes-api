@@ -7,6 +7,8 @@ const Note = require('./models/note');
 
 const app = express();
 
+app.use(express.json());
+
 app.get('/notes', (req, res) => {
     fs.readFile(__dirname + '/' + "notes.json", "utf-8", (err, data) => {
         if (err) {
