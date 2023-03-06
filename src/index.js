@@ -10,13 +10,7 @@ const app = express();
 app.use(express.json());
 
 app.get('/notes', (req, res) => {
-    fs.readFile(__dirname + '/' + "notes.json", "utf-8", (err, data) => {
-        if (err) {
-            return console.log(err)
-        }
-
-        res.status(200).send(data)
-    })
+    const notes = Note.find()
 });
 
 app.post('/notes', (req, res) => {
