@@ -9,7 +9,7 @@ app.get('/notes', (req, res) => {
             return console.log(err)
         }
 
-        res.send(data)
+        res.status(200).send(data)
     })
 })
 
