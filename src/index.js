@@ -21,6 +21,14 @@ app.get('/notes', (req, res) => {
 
 app.post('notes', (req, res) => {
     const note = new Note(req.body)
+
+    note.save()
+    .then(() => {
+        res.status(200).send(note)
+    })
+    .catch((err) => {
+        res.status(500).send(err)
+    })
 });
 
 app.listen(3000, () => {
