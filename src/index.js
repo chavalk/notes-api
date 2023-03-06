@@ -19,7 +19,7 @@ app.get('/notes', (req, res) => {
     })
 });
 
-app.post('notes', (req, res) => {
+app.post('/notes', (req, res) => {
     const note = new Note(req.body)
 
     note.save()
