@@ -45,6 +45,10 @@ app.patch('/notes/:id', async (req, res) => {
     try {
         const note = await Note.findById(req.params.id)
 
+        if (!note) {
+            return res.status(404).send()
+        }
+
         note.note = req.body.note
 
         await note.save()
