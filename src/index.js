@@ -9,8 +9,15 @@ const app = express();
 
 app.use(express.json());
 
-app.get('/notes', (req, res) => {
-    const notes = Note.find()
+app.get('/notes', async (req, res) => {
+    
+    try {
+        const notes = await Note.find({})
+        res.send(notes)
+    }
+    catch (err) {
+        res.status(500).send(err)
+    }
 });
 
 app.post('/notes', async (req, res) => {
