@@ -11,17 +11,7 @@ app.use(express.json());
 
 // CRUD
 
-app.get('/notes', async (req, res) => {
-    
-    try {
-        const notes = await Note.find({})
-        res.send(notes)
-    }
-    catch (err) {
-        res.status(500).send(err)
-    }
-});
-
+// CREATE
 app.post('/notes', async (req, res) => {
     const note = new Note(req.body)
 
@@ -31,6 +21,18 @@ app.post('/notes', async (req, res) => {
     }
     catch (err) {
         res.status(400).send(err)
+    }
+});
+
+// READ
+app.get('/notes', async (req, res) => {
+    
+    try {
+        const notes = await Note.find({})
+        res.send(notes)
+    }
+    catch (err) {
+        res.status(500).send(err)
     }
 });
 
