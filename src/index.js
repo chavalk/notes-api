@@ -12,6 +12,7 @@ app.use(express.json());
 // CRUD
 
 // CREATE
+
 app.post('/notes', async (req, res) => {
     const note = new Note(req.body)
 
@@ -25,6 +26,7 @@ app.post('/notes', async (req, res) => {
 });
 
 // READ
+
 app.get('/notes', async (req, res) => {
     
     try {
@@ -35,6 +37,24 @@ app.get('/notes', async (req, res) => {
         res.status(500).send(err)
     }
 });
+
+// UPDATE
+
+app.patch('/notes/:id', async (req, res) => {
+    
+    try {
+        const note = await Note.findById(req.params.id)
+
+        note.note = req.body.note
+
+        await note.save()
+
+        res.status(200).send(note)
+    }
+    catch (err) {
+        res.status(404).send(err)
+    }
+})
 
 app.listen(3000, () => {
     console.log("Server is up on port 3000")
