@@ -9,6 +9,8 @@ const app = express();
 
 app.use(express.json());
 
+// CRUD
+
 app.get('/notes', async (req, res) => {
     
     try {
